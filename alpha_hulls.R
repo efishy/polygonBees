@@ -143,7 +143,7 @@ for(i in c(1:length(more_than_2))){
   sp <- more_than_2$species[i]
   species_data <- subset(more_than_data, species == sp)
   
-  sp_hull <- ahull(species_data$decimalLongitude, species_data$decimalLatitude, alpha = 9)
+  sp_hull <- ahull(species_data$decimalLongitude, species_data$decimalLatitude, alpha = 14) ## change alpha value as needed
   
   sp_poly <- ah2sp(sp_hull)
   
@@ -167,7 +167,7 @@ for(i in c(1:length(more_than_2))){
     sp_raster[is.na(sp_raster)] = 0
     
     ## save as geoTIFF
-    writeRaster(sp_raster, format = "GTiff", overwrite = TRUE, file = paste(paste("~/Desktop/usa checklist/new ranges/alpha hull/alpha 9",paste(more_than_2$species[i]),sep="/"),"raster.tiff",sep="_"))
+    writeRaster(sp_raster, format = "GTiff", overwrite = TRUE, file = paste(paste("~/Desktop/T2T_data/alpha hull/alpha 14",paste(more_than_2$species[i]),sep="/"),"raster.tiff",sep="_"))
     
     ## make png
     # sp_raster <- mask(sp_raster, americas)
@@ -197,7 +197,7 @@ for(i in c(1:length(more_than_2))){
 
 colnames(problem_species) <- "species"
 
-write_csv(problem_species, "~/Desktop/alpha hull/alpha 14/impossible_hull_spp.csv")
+write_csv(problem_species, "~/Desktop/T2T_data/alpha hull/alpha 14/impossible_hull_spp.csv")
 
 
 
